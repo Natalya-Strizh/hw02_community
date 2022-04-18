@@ -4,7 +4,7 @@ ELEMENT_COUNT = 10
 
 
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:ELEMENT_COUNT]
+    posts = Post.objects.all()[:ELEMENT_COUNT]
     context = {
         'posts': posts,
     }
@@ -13,7 +13,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.all().order_by('-pub_date')[:ELEMENT_COUNT]
+    posts = Post.objects.all()[:ELEMENT_COUNT]
     context = {
         'group': group,
         'posts': posts,
